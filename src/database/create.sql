@@ -7,7 +7,7 @@ CREATE TABLE fornecedor (
   telefone VARCHAR(20)
 );
 
-REATE TABLE clientes (
+CREATE TABLE clientes (
   id INT PRIMARY KEY,
   nome VARCHAR(255) NOT NULL,
   endereco VARCHAR(255) NOT NULL,
@@ -21,13 +21,21 @@ CREATE TABLE funcionarios (
   cpf VARCHAR(20)
 );
 
+CREATE TABLE categorias (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome varchar(255) NOT NULL,
+  descricao text
+);
+
 CREATE TABLE produtos (
   id INT PRIMARY KEY,
   nome VARCHAR(255),
   descricao TEXT,
   preco DECIMAL(10,2),
   id_fornecedor INT,
-  FOREIGN KEY (id_fornecedor) REFERENCES fornecedor(id)
+  id_categoria int NOT NULL,
+  FOREIGN KEY (id_fornecedor) REFERENCES fornecedor(id),
+  FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
 
 CREATE TABLE pedidos (
@@ -39,3 +47,12 @@ CREATE TABLE pedidos (
   FOREIGN KEY (id_cliente) REFERENCES clientes(id),
   FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id)
 );
+
+
+
+
+
+
+
+
+
