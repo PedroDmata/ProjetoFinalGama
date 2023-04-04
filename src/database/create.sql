@@ -24,7 +24,9 @@ CREATE TABLE funcionarios (
 CREATE TABLE categorias (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome varchar(255) NOT NULL,
-  descricao text
+  descricao text,
+  createdAt datetime NOT NULL,
+  updatedAt datetime NOT NULL,
 );
 
 CREATE TABLE produtos (
