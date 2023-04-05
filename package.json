@@ -4,7 +4,7 @@
   "description": "Criacao de API para o desafio final da turma 47 da Gama Academy",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "nodemon build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Desenvolvedor Daniel A.H.Z.",
@@ -18,5 +18,8 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
     "sequelize": "^6.25.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11"
   }
 }

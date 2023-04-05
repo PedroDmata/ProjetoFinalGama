@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const { DB_NAME, DB_USER, DB_PASS } = require('./dbsecret')
+import {DB_NAME, DB_USER, DB_PASS} from "./dbsecret"
 
 const DB_CONFIG = {
   dialect: 'mysql',

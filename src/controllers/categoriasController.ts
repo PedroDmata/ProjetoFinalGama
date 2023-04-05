@@ -1,11 +1,11 @@
-const categorias = require('../models/categorias')
+const categorias1 = require('../models/categorias')
 const bcrypt = require('bcryptjs')
 
 //Listar todos produtos
-const categoriasController = {
-  listarCategoria: async (req, res) => {
+const categoriasController1 = {
+  listarCategoria: async (_req: any, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: unknown }): void; new(): any } } }) => {
     try {
-      const listacategoria = await categorias.findAll()
+      const listacategoria = await categorias1.findAll()
       res.status(200).json(listacategoria)
     } catch (error) {
       console.log(error)
@@ -14,10 +14,10 @@ const categoriasController = {
   },
 
   //Listar categoria por ID
-  async listarcategoriaId(req, res) {
+  async listarcategoriaId(req: { params: { id: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: string): void; new(): any; }; }; }) {
     try {
       const { id } = req.params
-      const listaDecategorias = await categorias.findAll({
+      const listaDecategorias = await categorias1.findAll({
         where: {
           id
         }
@@ -29,15 +29,15 @@ const categoriasController = {
         res.status(200).json(listaDecategorias)
       }
     } catch (error) {
-      res.status(404).json({ error })
+      res.status(404).json("error")
     }
   },
 
  //Cadastrar categoria
- async cadastrarcategoria(req, res) {
+ async cadastrarcategoria(req: { body: { nome: any; descricao: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: string): void; new(): any; }; }; }) {
   try {
     const { nome, descricao } = req.body
-    const casdastracategoria = await categorias.create({
+    const casdastracategoria = await categorias1.create({
       nome,
       descricao
     })
@@ -50,17 +50,17 @@ const categoriasController = {
       res.status(201).json(`Categoria ${nome} cadastrado com sucesso!`)
     }
   } catch (error) {
-    res.status(400).json({ error })
+    res.status(400).json("error")
   }
 },
 
   //Atualizar categoria
-  async atualizarcategoria(req, res) {
+  async atualizarcategoria(req: { params: { id: any; }; body: { nome: any; descricao: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: string): void; new(): any; }; }; }) {
     try {
       const { id } = req.params
       const { nome, descricao } = req.body
 
-      const Atualizacategoria = await categorias.findOne({
+      const Atualizacategoria = await categorias1.findOne({
         where: {
           id: id
         }
@@ -71,22 +71,22 @@ const categoriasController = {
           .status(400)
           .json('Houve um erro na requisição. Por favor, tente novamente.')
       } else {
-        await categorias.update({ nome, descricao }, { where: { id } })
+        await categorias1.update({ nome, descricao }, { where: { id } })
       }
 
       res
         .status(200)
         .json(`Informações da categoria ${nome} atualizadas com sucesso!`)
     } catch (error) {
-      res.status(400).json({ error })
+      res.status(400).json("error")
     }
   },
 
   // Deletando categoria
-  async deletarcategoria(req, res) {
+  async deletarcategoria(req: { params: { id: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: string): void; new(): any; }; }; sendStatus: (arg0: number) => void; }) {
     try {
       const { id } = req.params
-      const deletandocategoria = await categorias.destroy({
+      const deletandocategoria = await categorias1.destroy({
         where: {
           id
         }
@@ -97,9 +97,9 @@ const categoriasController = {
         res.sendStatus(204)
       }
     } catch (error) {
-      return res.status(400).json({ error })
+      return res.status(400).json("error")
     }
   }
 }
 
-module.exports = categoriasController
+module.exports = categoriasController1

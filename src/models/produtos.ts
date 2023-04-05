@@ -1,8 +1,8 @@
- const db = require('../database/db')
- const { DataTypes } = require('sequelize')
+ const db2 = require('../database/db')
+ import { DataTypes } from "sequelize";
 const categorias = require('./categorias')
 
- const produtos = db.define('produtos', {
+ const produtos = db2.define('produtos', {
    id: {
      type: DataTypes.INTEGER,
      autoIncrement: true,
