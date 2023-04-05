@@ -1,7 +1,7 @@
-const db = require('../database/db')
-const { DataTypes } = require('sequelize')
+const db1 = require('../database/db')
+import { DataTypes } from "sequelize";
 
-const categorias = db.define(
+const categorias2 = db1.define(
   'categorias',
   {
     id: {
@@ -32,4 +32,4 @@ const categorias = db.define(
   }
 )
 
-module.exports = categorias
+module.exports = categorias2
